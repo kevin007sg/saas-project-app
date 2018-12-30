@@ -1,13 +1,14 @@
 class ConfirmationsController < Milia::ConfirmationsController
   
   def update
+
     if @confirmable.attempt_set_password(user_params)
 
       # this section is patterned off of devise 3.2.5 confirmations_controller#show
 
       self.resource = resource_class.confirm_by_token(params[:confirmation_token])
       yield resource if block_given?
-
+      
       if resource.errors.empty?
         log_action( "invitee confirmed" )
         set_flash_message(:notice, :confirmed)
@@ -37,7 +38,7 @@ class ConfirmationsController < Milia::ConfirmationsController
       yield resource if block_given?
       
       if resource.errors.empty?
-        set_flash_message[:notice, :confirmed] if is_flashing_format?
+        set_flash_message(:notice, :confirmed) if is_flashing_format?
       end
       
       if @confirmable.skip_confirm_change_password
@@ -56,9 +57,9 @@ class ConfirmationsController < Milia::ConfirmationsController
     
     if user_signed_in?
       root_path
-    end
+    else
       new_user_session_path
-      
+    end
   end
   
   private
