@@ -7,12 +7,13 @@ ruby '2.5.0'
 gem 'rails', '~> 5.2.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
+gem 'jquery-rails'
 gem 'devise'
 gem 'milia'
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
 gem 'therubyracer'
-gem 'jquery-rails'
+gem 'bootstrap-datepicker-rails'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
